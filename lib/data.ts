@@ -1,0 +1,1 @@
+@file:///tmp/c03-only-content.ts
