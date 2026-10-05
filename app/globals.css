@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --museum: #f7f5f0;
+  --ink: #1a1a18;
+  --caption: #6e6a62;
+  --rule: #d5d0c6;
+  --spot: #2c3a32;
+}
+html { background: var(--museum); }
+body {
+  background: var(--museum);
+  color: var(--ink);
+  font-family: var(--font-sora), system-ui, sans-serif;
+}
+.font-display { font-family: var(--font-fraunces), "Times New Roman", serif; font-weight: 400; }
+.museum-rule { border-color: var(--rule); }
+.museum-caption {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--caption);
+}
+.hero-film { position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
+.hero-film img, .hero-film video, .hero-film .hero-film-img {
+  width: 100%; height: 100%; object-fit: cover;
+  transform: scale(1.04);
+  animation: museumDrift 36s ease-in-out infinite alternate;
+}
+@keyframes museumDrift {
+  from { transform: scale(1.02) translate3d(0, 0, 0); }
+  to { transform: scale(1.08) translate3d(-1%, -0.5%, 0); }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.anim-rise { animation: rise 0.9s ease both; }
+.anim-rise-d1 { animation: rise 0.95s ease 0.08s both; }
+.anim-rise-d2 { animation: rise 1s ease 0.16s both; }
+.anim-rise-d3 { animation: rise 1.05s ease 0.24s both; }
+.soft-scale { transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1); }
+.soft-scale:hover { transform: scale(1.02); }
+.gallery-tile img { transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+.gallery-tile:hover img { transform: scale(1.035); }
+@media (prefers-reduced-motion: reduce) {
+  .hero-film img, .hero-film video, .hero-film .hero-film-img { animation: none; transform: none; }
+  .anim-rise, .anim-rise-d1, .anim-rise-d2, .anim-rise-d3 { animation: none; }
+  .soft-scale:hover, .gallery-tile:hover img { transform: none; }
+}
